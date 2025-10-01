@@ -99,7 +99,7 @@ python3 /home/seuusuario/códigos/perplexity/perplexityai.py "Sua pergunta"
 
 ## Exemplo de saída
 
-´´´
+````
 ambvirtual                                                                
 Ambiente virtual ativado.
 (env) 
@@ -114,7 +114,7 @@ Brasília está localizada na Região Centro-Oeste do país e foi inaugurada com
 
 A cidade possui também o status de Patrimônio Histórico e Cultural da Humanidade pela Unesco devido ao seu projeto urbanístico inovador[2][4].
 (env)
-´´´
+````
 
 
 **Atenção:** Não compartilhe sua chave de API com ninguém. Este programa é para uso pessoal. Futuramente, o método de configuração da chave pode ser atualizado.
