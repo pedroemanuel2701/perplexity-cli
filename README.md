@@ -36,10 +36,7 @@ ambvirtual() {
 }
 
 
-## Configuração da chave de API
-# Adicione em um dos arquivos:
-
-### Sobre a chave de API
+### Configuração da chave de API
 
 Atualmente, a chave de API deve ser colocada diretamente no código, no arquivo `perplexityai.py`, substituindo o valor da variável <PERPLEXIT_API_KEY> :
 
