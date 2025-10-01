@@ -22,9 +22,15 @@ Este projeto é um CLI simples para interagir com a API da Perplexity usando Pyt
 
 ## Dica de uso rápido (Linux/macOS)
 
-Você pode criar uma função no seu `~/.zshrc` **ou** `~/.bashrc` para criar e ativar rapidamente um ambiente virtual:
+Você pode criar uma função no seu `~/.zshrc` **ou** `~/.bashrc` para criar e ativar rapidamente um ambiente virtual com:
 
-```sh
+```
+nano ~/.zshrc
+#OU
+nano ~/.bashrc
+```
+Colar
+```
 # Para zsh ou bash:
 ambvirtual() {
   if [ ! -d "./env" ]; then
@@ -34,47 +40,46 @@ ambvirtual() {
   source env/bin/activate
   echo "Ambiente virtual ativado."
 }
-
-
-### Configuração da chave de API
+```
+e dar Ctrl + O , Enter , Ctrl + X, e por fim:
+````
+source ~/.zshrc
+#OU
+source ~/.bashrc
+````
+Além dessa dica há o chamado rápido para o perplexity no terminal:
+Novamente
+```
+nano ~/.zshrc
+#OU
+nano ~/.bashrc
+```
+Colar o caminho até o código onde ficam os alias:
+````
+alias ppty="python3 /seu/caminho/até/perplexity.py"
+````
+e dar Ctrl + O , Enter , Ctrl + X, e por fim:
+````
+source ~/.zshrc
+#OU
+source ~/.bashrc
+````
+Configuração da chave de API
 
 Atualmente, a chave de API deve ser colocada diretamente no código, no arquivo `perplexityai.py`, substituindo o valor da variável <PERPLEXIT_API_KEY> :
 
 ```python
 os.environ["PERPLEXITY_API_KEY"] = "<PERPLEXIT_API_KEY>"
 ```
-```
-
+## Uso
 Depois, basta rodar (em qualquer terminal):
 ```
 ambvirtual
-```
 
-Também pode criar um alias para rodar o script rapidamente (adicione no mesmo arquivo):
-
-```sh
-alias ppty="python3 /home/pedroemanuel/códigos/perplexity/perplexityai.py"
-```
-
-Assim, basta digitar:
-```sh
-ppty "Sua pergunta para a Perplexity"
+ppty "Sua pergunta"
 ```
 
 **Atenção:** Não compartilhe sua chave de API com ninguém. Este programa é para uso pessoal. Futuramente, o método de configuração da chave pode ser atualizado.
 
-## Uso
-
-No terminal, execute:
-```sh
-python perplexityai.py "Sua pergunta para a Perplexity"
-```
-
-Exemplo:
-```sh
-python perplexityai.py "Quem descobriu o Brasil?"
-```
-
 ## Observações
-- Não compartilhe sua chave de API publicamente. O uso é **pessoal**.
 - Para dúvidas, consulte a [documentação oficial da Perplexity](https://docs.perplexity.ai/).
