@@ -1,3 +1,13 @@
+
+### Inserindo sua chave de API pelo terminal (recomendado)
+
+Ao rodar o programa pela primeira vez, será solicitado que você insira sua chave da API Perplexity no terminal. Ela será salva em um arquivo oculto (`~/.perplexity_api_key`) no seu diretório de usuário e será usada automaticamente nos próximos usos.
+
+Se quiser trocar a chave depois, basta apagar o arquivo:
+```sh
+rm ~/.perplexity_api_key
+```
+e rodar o programa novamente.
 # Perplexity CLI
 
 ![GitHub license](https://img.shields.io/github/license/pedroemanuel2701/perplexity-cli)
