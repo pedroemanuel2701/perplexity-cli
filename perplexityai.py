@@ -23,12 +23,8 @@ def get_api_key():
 from perplexity import Perplexity
 
 def main():
-    if len(sys.argv) < 2:
-        print("Uso: python perplexityai.py sua_pergunta_aqui | change-key")
-        sys.exit(1)
-
     # Comando especial para manipular a chave da API
-    if sys.argv[1] in ["change-key", "changekey", "key"]:
+    if len(sys.argv) > 1 and sys.argv[1] in ["change-key", "changekey", "key"]:
         print("\nOpções para a chave da API:")
         print("1 - Remover chave da API")
         print("2 - Manter chave atual")
@@ -52,29 +48,47 @@ def main():
             print("Opção inválida.")
         sys.exit(0)
 
-    pergunta = " ".join(sys.argv[1:])
-
     api_key = get_api_key()
     os.environ["PERPLEXITY_API_KEY"] = api_key
-
-    print("Enviando pergunta para a Perplexity... Aguarde.\n")
     client = Perplexity()
-    resposta = client.chat.completions.create(
-        model="sonar-pro",
-        messages=[{"role": "user", "content": pergunta}]
-    )
 
-    texto = resposta.choices[0].message.content
-    # Otimiza substituição de markdown para negrito ANSI
-    def bold_ansi(match):
-        return f"\033[1m{match.group(1)}\033[0m"
-    # Primeiro **texto**
-    texto = re.sub(r"\*\*(.*?)\*\*", bold_ansi, texto)
-    # Depois *palavra*
-    texto = re.sub(r"\*(\w[^*]*)\*", bold_ansi, texto)
-
-    print("Resposta:\n")
-    print(texto)
+    # Modo interativo se não houver argumentos
+    if len(sys.argv) < 2:
+        print("Modo interativo Perplexity. Digite sua pergunta e pressione Enter. (Ctrl+C para sair)\n")
+        try:
+            while True:
+                pergunta = input("Você: ").strip()
+                if not pergunta:
+                    continue
+                print("Enviando pergunta para a Perplexity... Aguarde.\n")
+                resposta = client.chat.completions.create(
+                    model="sonar-pro",
+                    messages=[{"role": "user", "content": pergunta}]
+                )
+                texto = resposta.choices[0].message.content
+                def bold_ansi(match):
+                    return f"\033[1m{match.group(1)}\033[0m"
+                texto = re.sub(r"\*\*(.*?)\*\*", bold_ansi, texto)
+                texto = re.sub(r"\*(\w[^*]*)\*", bold_ansi, texto)
+                print("Resposta:\n")
+                print(texto)
+        except KeyboardInterrupt:
+            print("\nEncerrando modo interativo.")
+            sys.exit(0)
+    else:
+        pergunta = " ".join(sys.argv[1:])
+        print("Enviando pergunta para a Perplexity... Aguarde.\n")
+        resposta = client.chat.completions.create(
+            model="sonar-pro",
+            messages=[{"role": "user", "content": pergunta}]
+        )
+        texto = resposta.choices[0].message.content
+        def bold_ansi(match):
+            return f"\033[1m{match.group(1)}\033[0m"
+        texto = re.sub(r"\*\*(.*?)\*\*", bold_ansi, texto)
+        texto = re.sub(r"\*(\w[^*]*)\*", bold_ansi, texto)
+        print("Resposta:\n")
+        print(texto)
 
 if __name__ == "__main__":
     main()
