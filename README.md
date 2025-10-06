@@ -1,3 +1,17 @@
+### Gerenciando a chave da API pelo terminal
+
+Você pode gerenciar sua chave da API facilmente pelo comando:
+
+```sh
+ppty change-key
+```
+
+Ao rodar esse comando, você verá opções para:
+- Remover a chave da API
+- Manter e visualizar a chave atual
+- Trocar a chave da API
+
+Assim, não é necessário editar arquivos manualmente para atualizar ou remover sua chave.
 
 ### Inserindo sua chave de API pelo terminal (recomendado)
 
@@ -172,6 +186,16 @@ Atualmente, a chave de API deve ser colocada diretamente no código, no arquivo 
 os.environ["PERPLEXITY_API_KEY"] = "<PERPLEXIT_API_KEY>"
 ```
 ## Uso
+
+### Modo interativo
+
+Agora você pode rodar o Perplexity em modo interativo, digitando apenas:
+
+```sh
+python perplexityai.py
+```
+
+O terminal ficará dedicado ao Perplexity: digite suas perguntas e pressione Enter para receber respostas. Para sair, use Ctrl+C.
 ppty "Sua pergunta"
 
 Depois, basta rodar (em qualquer terminal):
